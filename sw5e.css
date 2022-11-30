@@ -93,6 +93,9 @@
 .sw5e .window-content {
   font-size: 13px;
 }
+.sw5e h3 {
+  border-bottom: none;
+}
 .sw5e input[type="text"],
 .sw5e input[type="number"],
 .sw5e select {
@@ -167,6 +170,7 @@
   flex: 0 0 100%;
   margin: 0;
 }
+.sw5e .form-group.stacked label.number,
 .sw5e .form-group.stacked label.checkbox,
 .sw5e .form-group.stacked label.radio {
   flex: auto;
@@ -238,12 +242,6 @@
   /* ----------------------------------------- */
   /* ----------------------------------------- */
   /*  Trait Lists                              */
-  /* ----------------------------------------- */
-  /* ----------------------------------------- */
-  /*  Items Lists                              */
-  /* ----------------------------------------- */
-  /* ----------------------------------------- */
-  /*  Active Effects                           */
   /* ----------------------------------------- */
 }
 .sw5e.sheet .window-content {
@@ -317,6 +315,12 @@
   box-shadow: none;
   padding: 2px 8px;
   margin-bottom: 2px;
+}
+.sw5e.sheet .warnings .warning,
+.sw5e.sheet .info .warning,
+.sw5e.sheet .warnings .error,
+.sw5e.sheet .info .error {
+  text-shadow: black 0 0 1px, rgba(0, 0, 0, 0.75) 0 0 2px, rgba(0, 0, 0, 0.5) 0 0 4px;
 }
 .sw5e.sheet .sheet-header {
   flex: 0 0 100px;
@@ -435,13 +439,6 @@
 .sw5e.sheet .traits {
   margin: 5px 0 0;
 }
-.sw5e.sheet .traits .proficiency-selector,
-.sw5e.sheet .traits .trait-selector {
-  flex: 0 0 16px;
-  padding: 2px 0;
-  color: #999;
-  font-size: 10px;
-}
 .sw5e.sheet .traits .traits-list {
   flex: 0 0 100%;
   line-height: 20px;
@@ -449,7 +446,25 @@
   margin: 0;
   padding: 0;
 }
-.sw5e.sheet .items-list {
+.sw5e.sheet .trait-selector,
+.sw5e.sheet .proficiency-selector {
+  flex: 0 0 16px;
+  padding: 2px 0;
+  color: #999;
+  font-size: 10px;
+}
+/* ----------------------------------------- */
+/*  Items Lists                              */
+/* ----------------------------------------- */
+.sw5e {
+  /* ----------------------------------------- */
+  /*  Modifications                            */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Active Effects                           */
+  /* ----------------------------------------- */
+}
+.sw5e .items-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -457,12 +472,12 @@
   scrollbar-width: thin;
   color: #7a7971;
 }
-.sw5e.sheet .items-list .item-list {
+.sw5e .items-list .item-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.sw5e.sheet .items-list .item-name {
+.sw5e .items-list .item-name {
   flex: 2;
   margin: 0;
   overflow: hidden;
@@ -470,39 +485,40 @@
   text-align: left;
   align-items: center;
 }
-.sw5e.sheet .items-list .item-name h3,
-.sw5e.sheet .items-list .item-name h4 {
+.sw5e .items-list .item-name h3,
+.sw5e .items-list .item-name h4 {
   margin: 0;
   white-space: nowrap;
   overflow-x: hidden;
 }
-.sw5e.sheet .items-list .item-controls {
+.sw5e .items-list .item-controls {
   flex: 0 0 60px;
   justify-content: space-between;
 }
-.sw5e.sheet .items-list .item-controls a {
+.sw5e .items-list .item-controls a {
   font-size: 12px;
   text-align: center;
 }
-.sw5e.sheet .items-list .item {
+.sw5e .items-list .item {
   align-items: center;
   padding: 0 2px;
   border-bottom: 1px solid #c9c7b8;
 }
-.sw5e.sheet .items-list .item:last-child {
+.sw5e .items-list .item:last-child {
   border-bottom: none;
 }
-.sw5e.sheet .items-list .item .item-name {
+.sw5e .items-list .item .item-name {
   color: #191813;
 }
-.sw5e.sheet .items-list .item .item-name .item-image {
+.sw5e .items-list .item .item-name .item-image {
   flex: 0 0 30px;
   height: 30px;
-  background-size: 30px;
+  background-size: cover;
+  background-position: 50% 0;
   border: none;
   margin-right: 5px;
 }
-.sw5e.sheet .items-list .items-header {
+.sw5e .items-list .items-header {
   height: 28px;
   margin: 2px 0;
   padding: 0;
@@ -511,24 +527,53 @@
   border: 2px groove #eeede0;
   font-weight: bold;
 }
-.sw5e.sheet .items-list .items-header > * {
+.sw5e .items-list .items-header > * {
   font-size: 12px;
   text-align: center;
 }
-.sw5e.sheet .items-list .items-header h3 {
+.sw5e .items-list .items-header h3 {
   padding-left: 5px;
   text-align: left;
   font-size: 16px;
 }
-.sw5e.sheet .effects .item .effect-source,
-.sw5e.sheet .effects .item .effect-duration,
-.sw5e.sheet .effects .item .effect-controls {
+.sw5e .modification {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.sw5e .modification .modification-slot {
+  flex: 0 1 100px;
+  color: #191813;
+}
+.sw5e .modification .modification-name {
+  flex: 1 1 auto;
+}
+.sw5e .modification .modification-name .entity-link {
+  background-color: transparent !important;
+  border: groove !important;
+}
+.sw5e .modification .modification-controls {
+  flex: 0 0 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.sw5e .modification .modification-controls a {
+  font-size: 12px;
+  text-align: center;
+}
+.sw5e .modification.disabled .modification-name .entity-link {
+  color: #7a7971 !important;
+  outline: none !important;
+}
+.sw5e .effects .item .effect-source,
+.sw5e .effects .item .effect-duration,
+.sw5e .effects .item .effect-controls {
   text-align: center;
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
-.sw5e.sheet .effects .item .effect-controls {
+.sw5e .effects .item .effect-controls {
   border: none;
 }
 /* ----------------------------------------- */
@@ -696,6 +741,61 @@
   border-radius: 4px;
   pointer-events: all;
 }
+/* ----------------------------------------- */
+/*  SRD Compendium                           */
+/* ----------------------------------------- */
+.srd-compendium article {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
+.srd-compendium article aside,
+.srd-compendium article .contents {
+  border: 4px solid #ba2828;
+  background: #efefef99;
+}
+.srd-compendium article aside header h2,
+.srd-compendium article .contents header h2 {
+  border: none;
+  background: #ba2828;
+  color: var(--color-text-light-1);
+  padding: 0 0.25rem 0.25rem 0.25rem;
+  margin: 0;
+}
+.srd-compendium article aside section,
+.srd-compendium article .contents section {
+  padding: 0.625rem 1rem;
+}
+.srd-compendium article aside blockquote {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.srd-compendium article .contents {
+  flex-grow: 1;
+}
+.srd-compendium article .contents .chapter {
+  margin-bottom: 0.5rem;
+  break-inside: avoid-column;
+}
+.srd-compendium article .contents h3 {
+  border: none;
+  font-weight: bold;
+  font-size: var(--font-size-18);
+  color: var(--color-text-hyperlink);
+}
+.srd-compendium article .contents ul {
+  list-style-type: none;
+  margin: 0 0 0 0.375rem;
+  padding: 0;
+}
+.srd-compendium article .contents ul li {
+  font-size: var(--font-size-16);
+}
+.srd-compendium article .contents section {
+  column-count: 3;
+}
 .sw5e.sheet.actor {
   /* ----------------------------------------- */
   /*  Shared Styles                            */
@@ -775,6 +875,10 @@
   height: 24px;
   line-height: 24px;
 }
+.sw5e.sheet.actor .sheet-header .summary span {
+  margin-inline-start: 4px;
+  border-block-start: 1px solid transparent;
+}
 .sw5e.sheet.actor .sheet-header .summary select {
   position: relative;
   top: -4px;
@@ -803,6 +907,10 @@
 .sw5e.sheet.actor .sheet-header .attributes .attribute .config-button {
   position: absolute;
   display: none;
+  right: -6px;
+  top: -3px;
+  font-size: 10px;
+  font-weight: normal;
 }
 .sw5e.sheet.actor .sheet-header .attributes .attribute:hover .config-button {
   display: block;
@@ -831,6 +939,7 @@
 }
 .sw5e.sheet.actor .tab.attributes {
   overflow: hidden;
+  align-items: flex-start;
 }
 .sw5e.sheet.actor ul.attributes {
   flex: 0 0 60px;
@@ -882,7 +991,7 @@
 }
 .sw5e.sheet.actor .ability-scores {
   flex: 0 0 100px;
-  height: 440px;
+  align-content: flex-start;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -953,10 +1062,9 @@
 }
 .sw5e.sheet.actor ul.skills-list {
   flex: 0 0 180px;
-  height: 440px;
   list-style: none;
   margin: 0 5px 0;
-  padding: 3px 0 2px;
+  padding: 0;
   border: 2px groove #eeede0;
   border-radius: 3px;
 }
@@ -1086,7 +1194,8 @@
 .sw5e.sheet.actor .tab.features,
 .sw5e.sheet.actor .tab.inventory,
 .sw5e.sheet.actor .tab.force-powerbook,
-.sw5e.sheet.actor .tab.tech-powerbook {
+.sw5e.sheet.actor .tab.tech-powerbook,
+.sw5e.sheet.actor .tab.superiority-powerbook {
   overflow-y: hidden;
 }
 .sw5e.sheet.actor .inventory-filters {
@@ -1108,7 +1217,7 @@
   line-height: 20px;
   color: #7a7971;
 }
-.sw5e.sheet.actor .inventory-filters .currency input[type="text"] {
+.sw5e.sheet.actor .inventory-filters .currency input[type="number"] {
   flex: 0 0 48px;
   text-align: center;
   margin-left: 8px;
@@ -1301,8 +1410,7 @@
 .sw5e.sheet.actor .power-component {
   line-height: 14px;
 }
-.sw5e.sheet.actor .power-component.C,
-.sw5e.sheet.actor .power-component.R {
+.sw5e.sheet.actor .power-component.tag {
   display: inline-block;
   text-align: center;
   padding-top: 1px;
@@ -1318,8 +1426,80 @@
 .sw5e.sheet.actor .features i.original-class {
   color: #4b4a44;
 }
+.sw5e.sheet.actor .features .item-detail select {
+  max-width: 90%;
+}
 .sw5e.sheet.actor .editor {
   padding: 0 8px;
+}
+.sw5e.sheet.actor .fuel {
+  flex: 0 0 12px;
+  background: #7a7971;
+  margin: 1px 15px 0 1px;
+  border: 1px solid #191813;
+  border-radius: 3px;
+  position: relative;
+}
+.sw5e.sheet.actor .fuel .fuel-bar {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background: #6c8aa5;
+  height: 8px;
+  border: 1px solid #cde4ff;
+  border-radius: 2px;
+}
+.sw5e.sheet.actor .fuel .fuel-label {
+  height: 10px;
+  padding: 0 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 13px;
+  line-height: 12px;
+  text-align: right;
+  color: #eee;
+  text-shadow: 0 0 5px #000;
+}
+.sw5e.sheet.actor .fuel .fuel-breakpoint {
+  display: block;
+  position: absolute;
+}
+.sw5e.sheet.actor .fuel .fuel-breakpoint.fuel-20 {
+  left: 20%;
+}
+.sw5e.sheet.actor .fuel .fuel-breakpoint.fuel-40 {
+  left: 40%;
+}
+.sw5e.sheet.actor .fuel .fuel-breakpoint.fuel-60 {
+  left: 60%;
+}
+.sw5e.sheet.actor .fuel .fuel-breakpoint.fuel-80 {
+  left: 80%;
+}
+.sw5e.sheet.actor .fuel .arrow-up {
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #000;
+}
+.sw5e.sheet.actor .fuel .arrow-down {
+  top: 0;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #000;
+}
+.sw5e.sheet.actor .fuel.fueled .arrow-up {
+  border-bottom: 4px solid #fff;
+  border-bottom: 4px solid #000;
+}
+.sw5e.sheet.actor .fuel.fueled .arrow-down {
+  border-top: 4px solid #fff;
+  border-top: 4px solid #000;
 }
 #actor-flags .window-content {
   overflow-y: hidden;
@@ -1333,6 +1513,161 @@
   margin-bottom: 4px;
   overflow-y: auto;
   scrollbar-width: thin;
+}
+.sw5e.advancement {
+  /* ----------------------------------------- */
+  /*  Advancement Selection                    */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Two Column Configurations                */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Scale Value                              */
+  /* ----------------------------------------- */
+}
+.sw5e.advancement input[type="text"],
+.sw5e.advancement input[type="number"],
+.sw5e.advancement select {
+  height: var(--form-field-height);
+}
+.sw5e.advancement .form-group .form-fields button {
+  flex: 0;
+}
+.sw5e.advancement .form-group .form-field-readonly {
+  color: #999;
+}
+.sw5e.advancement .items-list {
+  margin-bottom: 1em;
+  /* Solves the borders being cut off */
+}
+.sw5e.advancement .items-list li.item {
+  padding-top: 0.25em;
+}
+.sw5e.advancement .items-list .item-hint {
+  flex: 0 1 100%;
+  margin-left: 35px;
+  margin-bottom: 0.5em;
+}
+.sw5e.advancement .items-list .content-link {
+  display: inline-block;
+}
+.sw5e.advancement .centered {
+  text-align: center;
+}
+.sw5e.advancement.two-column {
+  --grid-two-column-left-size: 1fr;
+  --grid-two-column-right-size: 1fr;
+}
+.sw5e.advancement.two-column form {
+  display: grid;
+  grid-template-columns: var(--grid-two-column-left-size) var(--grid-two-column-right-size);
+  grid-template-areas: "left right";
+  grid-gap: 0.4em;
+}
+.sw5e.advancement.two-column form .left-column {
+  grid-area: left;
+}
+.sw5e.advancement.two-column form .right-column {
+  grid-area: right;
+}
+.sw5e.advancement.two-column form button[type="submit"] {
+  grid-column-end: span 2;
+}
+.sw5e.advancement.scale-value {
+  --grid-two-column-right-size: 0.6fr;
+}
+.sw5e.advancement.scale-value .right-column label {
+  flex: 0.5;
+  padding-right: 0.5rem;
+  text-align: right;
+}
+.sw5e.advancement.scale-value :is(input[type="text"], input[type="number"])::placeholder {
+  opacity: 0.5;
+}
+.sw5e.advancement.scale-value select.new-scale-value {
+  font-weight: bold;
+}
+.sw5e.advancement.scale-value select option[value=""] {
+  color: var(--color-text-light-6);
+}
+/* ----------------------------------------- */
+/*  Advancement Flow                         */
+/* ----------------------------------------- */
+.sw5e.advancement.flow .step {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.sw5e.advancement.flow .step h1 {
+  flex-grow: 1;
+}
+.sw5e.advancement.flow .step h2 {
+  text-align: right;
+  line-height: 1.8em;
+  border-bottom: 2px solid var(--color-underline-header);
+}
+.sw5e.advancement.flow .step form {
+  flex-basis: 100%;
+}
+.sw5e.advancement.flow h3 {
+  font-size: var(--font-size-20);
+}
+.sw5e.advancement.flow .item-name .item-image {
+  flex: 0 0 30px;
+  height: 30px;
+  background-size: cover;
+  background-position: 50% 0;
+  margin-inline-end: 5px;
+}
+.sw5e.advancement.flow .item-name label {
+  align-items: center;
+}
+.sw5e.advancement.flow .item-name label h4 {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.sw5e.advancement.flow form:not(:last-of-type) {
+  margin-block-end: 0.5em;
+  border-block-end: 2px groove var(--color-border-light-1);
+  padding-block-end: 1em;
+}
+.sw5e.advancement.flow form[data-type="HitPoints"] div {
+  font-size: var(--font-size-14);
+}
+.sw5e.advancement.flow form[data-type="HitPoints"] .rolls {
+  display: grid;
+  grid-template-columns: 50% 1fr 1fr;
+  align-items: center;
+  gap: 2px;
+}
+.sw5e.advancement.flow form[data-type="HitPoints"] .rolls .averageLabel span,
+.sw5e.advancement.flow form[data-type="HitPoints"] .rolls .averageLabel input {
+  vertical-align: middle;
+}
+.sw5e.advancement.flow form[data-type="HitPoints"] .rolls .rollResult {
+  text-align: center;
+}
+.sw5e.advancement.flow form[data-type="HitPoints"] .rolls .rollButton {
+  height: calc(var(--form-field-height) + 5px);
+  line-height: 1.5em;
+}
+.sw5e.advancement.flow input.error {
+  outline: 2px solid red;
+}
+.sw5e.advancement.flow form[data-type="ScaleValue"] p {
+  margin-block-end: 0;
+  font-size: var(--font-size-18);
+}
+.sw5e.advancement.flow form[data-type="ScaleValue"] span.none {
+  font-style: italic;
+}
+.sw5e.advancement.flow nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-block-start: 1em;
+}
+.sw5e.advancement.flow nav button {
+  max-width: 50%;
 }
 .sw5e.sheet.item {
   min-height: 660px;
@@ -1348,6 +1683,9 @@
   /* ----------------------------------------- */
   /* ----------------------------------------- */
   /*  Item Actions                             */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Item Advancement                         */
   /* ----------------------------------------- */
   /* ----------------------------------------- */
   /*  Loot Sheet (No Tabs)                     */
@@ -1382,7 +1720,12 @@
   font-size: 16px;
   line-height: 24px;
 }
-.sw5e.sheet.item .sheet-header .item-subtitle .summary li {
+.sw5e.sheet.item .sheet-header .summary .class-level {
+  flex: 0 0 4em;
+  padding: 0 0.25em;
+  text-align: right;
+}
+.sw5e.sheet.item .sheet-header .summary li {
   font-size: 16px;
 }
 .sw5e.sheet.item .sheet-navigation {
@@ -1670,6 +2013,12 @@
   font-size: 12px;
   line-height: 18px;
 }
+.sw5e.sheet.item .sheet-body .item-properties .properties-header {
+  font-weight: bold;
+  color: #4b4a44;
+  margin: 0.5em 0 0 0;
+  font-size: 1em;
+}
 .sw5e.sheet.item .details input[type="text"],
 .sw5e.sheet.item .details input[type="number"],
 .sw5e.sheet.item .details select {
@@ -1717,7 +2066,7 @@
   font-size: 12px;
   line-height: 24px;
 }
-.sw5e.sheet.item .details .power-materials input[type="text"] {
+.sw5e.sheet.item .details .power-materials input[type="number"] {
   flex: 0 0 48px;
   margin-right: 10px;
 }
@@ -1756,20 +2105,72 @@
   text-align: right;
   padding-right: 3px;
 }
-.sw5e.sheet.item .recharge.form-group input[type="text"] {
+.sw5e.sheet.item .recharge.form-group input[type="number"] {
   flex: 0 0 32px;
   text-align: center;
 }
+.sw5e.sheet.item .recharge.form-group label.number,
 .sw5e.sheet.item .recharge.form-group label.checkbox {
   flex: none;
 }
+.sw5e.sheet.item .recharge.form-group label.number input,
 .sw5e.sheet.item .recharge.form-group label.checkbox input {
   width: 16px;
   height: 16px;
   top: 4px;
 }
-.sw5e.sheet.item .weapon-properties label.checkbox {
+.sw5e.sheet.item .weapon-properties label.number,
+.sw5e.sheet.item .weapon-properties label.checkbox,
+.sw5e.sheet.item .armor-properties label.number,
+.sw5e.sheet.item .armor-properties label.checkbox,
+.sw5e.sheet.item .casting-properties label.number,
+.sw5e.sheet.item .casting-properties label.checkbox {
   flex: 0 0 98px;
+}
+.sw5e.sheet.item .advancement .items-list {
+  height: 100%;
+}
+.sw5e.sheet.item .advancement .items-list .main-controls .configuration-mode-control {
+  flex: 1 0;
+  margin-inline-start: 0.5em;
+}
+.sw5e.sheet.item .advancement .items-list .main-controls .configuration-mode-control a {
+  text-align: start;
+}
+.sw5e.sheet.item .advancement .items-list .main-controls .item-add {
+  padding-block-start: 0.2em;
+}
+.sw5e.sheet.item .advancement .items-list .items-header .item-checkmark {
+  flex: 0 0 44px;
+  color: rgb(17 145 17);
+  text-shadow: white 0 0 1px;
+}
+.sw5e.sheet.item .advancement .items-list .items-header .item-warning {
+  flex: 0 0 44px;
+  color: rgb(250 255 35);
+  text-shadow: black 0 0 1px;
+}
+.sw5e.sheet.item .advancement .items-list .item-name {
+  flex: 1 0 10em;
+}
+.sw5e.sheet.item .advancement .items-list .item-controls {
+  border-left: 1px solid #c9c7b8;
+  flex: 0 0 44px;
+}
+.sw5e.sheet.item .advancement .items-list .item-summary {
+  flex: 0 0 100%;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0 0.5em 0.5em 34px;
+  margin-top: -4px;
+  color: #191813;
+}
+.sw5e.sheet.item .advancement .items-list .item-summary .item-list .item-name {
+  display: flex;
+}
+.sw5e.sheet.item .advancement .items-list .tag {
+  font-size: 0.7rem;
+  padding: 0.1em 0.5em;
 }
 .sw5e.sheet.item .loot-header {
   margin-bottom: 10px;

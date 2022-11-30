@@ -58,7 +58,11 @@
                 height: 24px;
                 line-height: 24px;
             }
-            select {
+            span {
+              margin-inline-start: 4px;
+              border-block-start: 1px solid transparent;
+            }
+                  select {
                 position: relative;
                 top: -4px;
             }
@@ -89,11 +93,15 @@
                     line-height: 30px;
                 }
 
+                // Attribute Configuration
                 .config-button {
                     position: absolute;
                     display: none;
+                    right: -6px;
+                    top: -3px;
+                    font-size: 10px;
+                    font-weight: normal;
                 }
-
                 &:hover .config-button {
                     display: block;
                 }
@@ -137,7 +145,8 @@
 
     .tab.attributes {
         overflow: hidden;
-    }
+        align-items: flex-start;
+        }
 
     ul.attributes {
         flex: 0 0 60px;
@@ -200,7 +209,7 @@
 
     .ability-scores {
         flex: 0 0 100px;
-        height: 440px;
+        align-content: flex-start;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -287,10 +296,9 @@
 
     ul.skills-list {
         flex: 0 0 180px;
-        height: 440px;
         list-style: none;
         margin: 0 5px 0;
-        padding: 3px 0 2px;
+        padding: 0;
         border: @borderGroove;
         border-radius: 3px;
 
@@ -458,7 +466,8 @@
     .tab.features,
     .tab.inventory,
     .tab.force-powerbook,
-    .tab.tech-powerbook {
+    .tab.tech-powerbook,
+    .tab.superiority-powerbook {
         overflow-y: hidden;
     }
 
@@ -482,7 +491,7 @@
                 line-height: 20px;
                 color: @colorTan;
             }
-            input[type="text"] {
+            input[type="number"] {
                 flex: 0 0 48px;
                 text-align: center;
                 margin-left: 8px;
@@ -718,8 +727,7 @@
 
     .power-component {
         line-height: 14px;
-        &.C,
-        &.R {
+        &.tag {
             display: inline-block;
             text-align: center;
             padding-top: 1px;
@@ -742,15 +750,89 @@
 
     // Original class icon
     .features i.original-class {
-        color: #4b4a44;
+        color: #4b4a44
     }
-
+    .features .item-detail select {
+      max-width: 90%;
+    }
+  
     /* ----------------------------------------- */
     /*  TinyMCE                                  */
     /* ----------------------------------------- */
 
     .editor {
         padding: 0 8px;
+    }
+    .fuel {
+        flex: 0 0 12px;
+        background: #7a7971;
+        margin: 1px 15px 0 1px;
+        border: 1px solid #191813;
+        border-radius: 3px;
+        position: relative;
+        .fuel-bar {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            background: #6c8aa5;
+            height: 8px;
+            border: 1px solid #cde4ff;
+            border-radius: 2px;
+        }
+        .fuel-label {
+            height: 10px;
+            padding: 0 5px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 13px;
+            line-height: 12px;
+            text-align: right;
+            color: #eee;
+            text-shadow: 0 0 5px #000;
+        }
+        .fuel-breakpoint {
+            display: block;
+            position: absolute;
+        }
+        .fuel-breakpoint.fuel-20 {
+            left: 20%;
+        }
+        .fuel-breakpoint.fuel-40 {
+            left: 40%;
+        }
+        .fuel-breakpoint.fuel-60 {
+            left: 60%;
+        }
+        .fuel-breakpoint.fuel-80 {
+            left: 80%;
+        }
+        .arrow-up {
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-bottom: 4px solid #000;
+        }
+        .arrow-down {
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #000;
+        }
+    }
+    .fuel.fueled {
+        .arrow-up {
+            border-bottom: 4px solid #fff;
+            border-bottom: 4px solid #000;
+        }
+        .arrow-down {
+            border-top: 4px solid #fff;
+            border-top: 4px solid #000;
+        }
     }
 }
 
